@@ -1,14 +1,16 @@
 package com.jokes.springjokesapp.services
 
 import guru.springframework.norris.chuck.ChuckNorrisQuotes
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 
-@Service
-class JokeServiceImpl(chuckNorrisQuotes: ChuckNorrisQuotes):JokeService {
+@Service("chuckJoke")
+@Qualifier("chuckJoke")
 
-    final val chuckNorrisQuotes = ChuckNorrisQuotes()
+open class JokeServiceImpl:JokeService {
 
     override fun getJoke(): String {
-        return chuckNorrisQuotes.randomQuote
+        val chokeNorrisQuotes = ChuckNorrisQuotes()
+        return chokeNorrisQuotes.randomQuote
     }
 }
