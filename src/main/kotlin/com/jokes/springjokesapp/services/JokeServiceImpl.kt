@@ -4,13 +4,11 @@ import guru.springframework.norris.chuck.ChuckNorrisQuotes
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 
-@Service("chuckJoke")
+@Service
 @Qualifier("chuckJoke")
-
-open class JokeServiceImpl:JokeService {
+class JokeServiceImpl(var chuckNorrisQuotes:ChuckNorrisQuotes ):JokeService {
 
     override fun getJoke(): String {
-        val chokeNorrisQuotes = ChuckNorrisQuotes()
-        return chokeNorrisQuotes.randomQuote
+        return chuckNorrisQuotes.randomQuote
     }
 }
